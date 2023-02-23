@@ -3,6 +3,9 @@
 
 // Constants
 #define BOARD_SIZE 8
+#define BLACK 0
+#define WHITE 1
+#define NONE -1
 
 // Structs
 typedef struct{
@@ -18,7 +21,6 @@ typedef struct{
 } Piece;
 
 extern Piece board[BOARD_SIZE][BOARD_SIZE];
-extern int x;
 
 // Functions
 void initBoard(Piece board[BOARD_SIZE][BOARD_SIZE]);
