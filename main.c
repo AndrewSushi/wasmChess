@@ -45,10 +45,17 @@ void printBoard(Piece board[BOARD_SIZE][BOARD_SIZE]){
     }
 }
 
-
-
 int main(){
     initBoard(board);
-    printBoard(board);
+    // printBoard(board);
+    Position test;
+    test.x = 0;
+    test.y = 0;
+    Position test2;
+    test.x = 2;
+    test.y = 2;
+    // rook(test, board[4][5]);
+    // printf("%d\n", bishop(test, board[5][5]));
+    printf("%d\n", isPathClear(test, test2));
     return 0;
 }

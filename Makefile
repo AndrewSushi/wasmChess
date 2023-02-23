@@ -1,2 +1,2 @@
 all:
-	gcc main.c -o sushibot
+	gcc main.c move_logic.c -o sushibot

@@ -34,4 +34,12 @@ int isStalemate(Piece board[BOARD_SIZE][BOARD_SIZE], int color);
 int isThreeFoldRepetition(Piece board[BOARD_SIZE][BOARD_SIZE]);
 int isValidMove(Piece board[BOARD_SIZE][BOARD_SIZE], Position start, Position end);
 
+int isPathClear(Position from, Position to);
+int rook(Position to, Piece piece);
+int knight(Position to, Piece piece);
+int bishop(Position to, Piece piece);
+int queen(Position to, Piece piece);
+int king(Position to, Piece piece);
+int pawn(Position to, Piece piece);
+
 #endif
