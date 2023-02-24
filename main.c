@@ -59,29 +59,36 @@ int testing(){
     Position kingPos2;
     kingPos2.x = 3;
     kingPos2.y = 6;
-    printf("%d\n", rook(p1, board[4][2]));
-    printf("%d\n", rook(p1, board[2][4]));
-    printf("%d\n", rook(p1, board[4][4]));
-    
-    printf("%d\n", bishop(p1, board[4][4]));
-    printf("%d\n", bishop(p1, board[2][4]));
-    
-    printf("%d\n", knight(p1, board[3][4]));
-    printf("%d\n", knight(p1, board[4][3]));
-    printf("%d\n", knight(p1, board[4][4]));
 
-    printf("%d\n", queen(p1, board[4][4]));
-    printf("%d\n", queen(p1, board[4][2]));
-    printf("%d\n", queen(p1, board[2][4]));
-    printf("%d\n", queen(p1, board[4][3]));
+    Position p3;
+    p3.x = 3;
+    p3.y = 4;
+
+    // printf("%d\n", rook(p1, board[4][2]));
+    // printf("%d\n", rook(p1, board[2][4]));
+    // printf("%d\n", rook(p1, board[4][4]));
     
-    printf("%d\n", king(p1, board[3][3]));
-    printf("%d\n", king(p1, board[2][3]));
-    printf("%d\n", king(p1, board[3][2]));
-    printf("%d\n", board[7][7].color);
-    printf("%d\n", king(kingPos2, board[3][4]));
-    printf("%d\n", king(kingPos, board[3][4]));    
+    // printf("%d\n", bishop(p1, board[4][4]));
+    // printf("%d\n", bishop(p1, board[2][4]));
     
+    // printf("%d\n", knight(p1, board[3][4]));
+    // printf("%d\n", knight(p1, board[4][3]));
+    // printf("%d\n", knight(p1, board[4][4]));
+
+    // printf("%d\n", queen(p1, board[4][4]));
+    // printf("%d\n", queen(p1, board[4][2]));
+    // printf("%d\n", queen(p1, board[2][4]));
+    // printf("%d\n", queen(p1, board[4][3]));
+    
+    // printf("%d\n", king(p1, board[3][3]));
+    // printf("%d\n", king(p1, board[2][3]));
+    // printf("%d\n", king(p1, board[3][2]));
+    // printf("%d\n", board[7][7].color);
+    // printf("%d\n", king(kingPos2, board[3][4]));
+    // printf("%d\n", king(kingPos, board[3][4]));
+    
+    printf("%d\n", pawn(p3, board[1][4]));
+
     printf("%d\n", isPathClear(p1, p2));
     return 0;
 }
@@ -89,6 +96,6 @@ int testing(){
 int main(){
     initBoard(board);
     printBoard(board);
-    // testing();
+    testing();
     return 0;
 }

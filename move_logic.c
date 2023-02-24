@@ -2,14 +2,16 @@
 #include <stdlib.h>
 #include "game.h"
 
-int isPathClear(Position from, Position to);
-int rook(Position to, Piece piece);
-int knight(Position to, Piece piece);
-int bishop(Position to, Piece piece);
-int queen(Position to, Piece piece);
-int king(Position to, Piece piece);
-int pawn(Position to, Piece piece);
+// int isPathClear(Position from, Position to);
+// int rook(Position to, Piece piece);
+// int knight(Position to, Piece piece);
+// int bishop(Position to, Piece piece);
+// int queen(Position to, Piece piece);
+// int king(Position to, Piece piece);
+// int pawn(Position to, Piece piece);
 
+Position enPassasntSquare;
+int enPassasnt = 0;
 int castling = 15;
 
 int isPathClear(Position from, Position to){
@@ -95,4 +97,35 @@ int king(Position to, Piece piece){
     return ((move1 || move2) && oneSquare);
 }
 
-int pawn(Position to, Piece piece);
+int pawn(Position to, Piece piece){
+    if(piece.color == WHITE){ // White can't move backwards
+        if(piece.position.x - to.x < 0){
+            return 0;
+        }
+    }else if(piece.color == BLACK){ // Black can't move backwards
+        if(to.x - piece.position.x < 0){
+            return 0;
+        }
+    }
+    int push = (abs(to.x - piece.position.x) == 1 && piece.position.y == to.y && board[to.x][to.y].piece == ' ');
+    int capture = (abs(to.x - piece.position.x) == 1 && abs(to.y - piece.position.y) == 1 && board[to.x][to.y].piece != ' ');
+    int twoPush = (abs(to.x - piece.position.x) == 2 && ((piece.position.x == 6) || (piece.position.x == 1)) && piece.position.y == to.y && board[to.x][to.y].piece == ' ');
+    // printf("Push %d\n", push);
+    // printf("Capture %d\n", capture);
+    // printf("Two Push %d\n", twoPush);
+    if(enPassasnt && (to.x == enPassasntSquare.x) && (to.y == enPassasntSquare.y) && abs(to.x - piece.position.x) == 1 && abs(to.y - piece.position.y) == 1){
+        return 1;
+    }
+    if(twoPush){
+        if(piece.position.x == 6){
+            if(board[5][to.y] != ' '){
+                twoPush = !twoPush;
+            }
+        }else if(piece.position.x == 1){
+            if(board[2][to.y] != ' '){
+                twoPush = !twoPush;
+            }
+        }
+    }
+    return push || capture || twoPush;
+}
