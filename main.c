@@ -45,17 +45,50 @@ void printBoard(Piece board[BOARD_SIZE][BOARD_SIZE]){
     }
 }
 
+int testing(){
+
+    Position p1;
+    p1.x = 2;
+    p1.y = 2;
+    Position p2;
+    p2.x = 4;
+    p2.y = 4;
+    Position kingPos;
+    kingPos.x = 3;
+    kingPos.y = 2;
+    Position kingPos2;
+    kingPos2.x = 3;
+    kingPos2.y = 6;
+    printf("%d\n", rook(p1, board[4][2]));
+    printf("%d\n", rook(p1, board[2][4]));
+    printf("%d\n", rook(p1, board[4][4]));
+    
+    printf("%d\n", bishop(p1, board[4][4]));
+    printf("%d\n", bishop(p1, board[2][4]));
+    
+    printf("%d\n", knight(p1, board[3][4]));
+    printf("%d\n", knight(p1, board[4][3]));
+    printf("%d\n", knight(p1, board[4][4]));
+
+    printf("%d\n", queen(p1, board[4][4]));
+    printf("%d\n", queen(p1, board[4][2]));
+    printf("%d\n", queen(p1, board[2][4]));
+    printf("%d\n", queen(p1, board[4][3]));
+    
+    printf("%d\n", king(p1, board[3][3]));
+    printf("%d\n", king(p1, board[2][3]));
+    printf("%d\n", king(p1, board[3][2]));
+    printf("%d\n", board[7][7].color);
+    printf("%d\n", king(kingPos2, board[3][4]));
+    printf("%d\n", king(kingPos, board[3][4]));    
+    
+    printf("%d\n", isPathClear(p1, p2));
+    return 0;
+}
+
 int main(){
     initBoard(board);
-    // printBoard(board);
-    Position test;
-    test.x = 0;
-    test.y = 0;
-    Position test2;
-    test.x = 2;
-    test.y = 2;
-    // rook(test, board[4][5]);
-    // printf("%d\n", bishop(test, board[5][5]));
-    printf("%d\n", isPathClear(test, test2));
+    printBoard(board);
+    // testing();
     return 0;
 }
