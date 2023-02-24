@@ -59,14 +59,9 @@ int testing(){
     Position kingPos2;
     kingPos2.x = 3;
     kingPos2.y = 6;
-
-    Position p3;
-    p3.x = 3;
-    p3.y = 4;
-
-    // printf("%d\n", rook(p1, board[4][2]));
-    // printf("%d\n", rook(p1, board[2][4]));
-    // printf("%d\n", rook(p1, board[4][4]));
+    // printf("%d\n", rook(p4, board[4][0]));
+    // printf("%d\n", rook(p4, board[0][4]));
+    // printf("%d\n", rook(p4, board[4][4]));
     
     // printf("%d\n", bishop(p1, board[4][4]));
     // printf("%d\n", bishop(p1, board[2][4]));
@@ -87,9 +82,22 @@ int testing(){
     // printf("%d\n", king(kingPos2, board[3][4]));
     // printf("%d\n", king(kingPos, board[3][4]));
     
-    printf("%d\n", pawn(p3, board[1][4]));
+    // printf("%d\n", pawn(p3, board[1][4]));
+    // printf("%d\n", pawn(p3, board[2][4]));
 
-    printf("%d\n", isPathClear(p1, p2));
+    // printf("%d\n", isValidMove(board, p3, board[1][4].position));
+    // printf("%d\n", isValidMove(board, (Position){0, 0}, board[4][0].position));
+    // printf("%d\n", isValidMove(board, (Position){0, 2}, board[3][5].position));
+    // printf("%d\n", isValidMove(board, (Position){0, 1}, board[2][2].position));
+    // printf("%d\n", isValidMove(board, (Position){0, 3}, board[7][3].position));
+    // printf("%d\n", isValidMove(board, (Position){0, 3}, board[3][6].position));
+    // printf("%d\n", isValidMove(board, (Position){0, 4}, board[1][4].position));
+    // printf("%d\n", isValidMove(board, (Position){0, 4}, board[1][5].position));
+    // printf("%d\n", isValidMove(board, (Position){0, 4}, board[1][3].position));
+    // printf("%d\n", isValidMove(board, p4, board[0][4].position));
+
+
+    // printf("%d\n", isPathClear(p1, p2));
     return 0;
 }
 

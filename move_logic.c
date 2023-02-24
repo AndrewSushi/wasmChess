@@ -9,6 +9,8 @@
 // int queen(Position to, Piece piece);
 // int king(Position to, Piece piece);
 // int pawn(Position to, Piece piece);
+// int isValidMove(Piece board[BOARD_SIZE][BOARD_SIZE], Position start, Position end);
+
 
 Position enPassasntSquare;
 int enPassasnt = 0;
@@ -25,7 +27,7 @@ int isPathClear(Position from, Position to){
             }
         }
     }else if(y == 0){
-        int increment = y > 0 ? 1 : -1;
+        int increment = x > 0 ? 1 : -1;
         for(int i = from.x + increment; i != to.x; i += increment){
             if(board[i][from.y].piece != ' '){
                 return 0;
@@ -36,7 +38,6 @@ int isPathClear(Position from, Position to){
         int incrementX = x > 0 ? 1: -1;
         for(int i = from.x + incrementX, j = from.y + incrementY; i != to.x; i += incrementX, j += incrementY){
             if(board[i][j].piece != ' '){
-                // printf("%c\n", board[i][j].piece);
                 return 0;
             }
         }
@@ -118,14 +119,44 @@ int pawn(Position to, Piece piece){
     }
     if(twoPush){
         if(piece.position.x == 6){
-            if(board[5][to.y] != ' '){
+            if(board[5][to.y].piece != ' '){
                 twoPush = !twoPush;
             }
         }else if(piece.position.x == 1){
-            if(board[2][to.y] != ' '){
+            if(board[2][to.y].piece != ' '){
                 twoPush = !twoPush;
             }
         }
     }
     return push || capture || twoPush;
+}
+
+int isValidMove(Piece board[BOARD_SIZE][BOARD_SIZE], Position start, Position end){
+    Piece piece = board[start.x][start.y];
+    if(start.x == end.x && start.y == end.y){ // Same square
+        return 0;
+    }
+    if(piece.color == board[end.x][end.y].color){ // Same color
+        return 0;
+    }
+    switch(piece.piece){
+        case 'R':
+            enPassasnt = 0;
+            return rook(end, piece);
+        case 'N':
+            enPassasnt = 0;
+            return knight(end, piece);
+        case 'B':
+            enPassasnt = 0;
+            return bishop(end, piece);
+        case 'Q':
+            enPassasnt = 0;
+            return queen(end, piece);
+        case 'K':
+            enPassasnt = 0;
+            return king(end, piece);
+        case 'P':
+            return pawn(end, piece);
+    }
+    return 1;
 }
